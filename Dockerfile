@@ -19,7 +19,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential wget libbz
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN wget https://dl.bintray.com/boostorg/release/1.65.0/source/boost_1_65_0.tar.gz \
+RUN wget https://boostorg.jfrog.io/artifactory/main/release/1.65.0/source/boost_1_65_0.tar.gz \
   && tar xfz boost_1_65_0.tar.gz \
   && rm boost_1_65_0.tar.gz \
   && cd boost_1_65_0 \

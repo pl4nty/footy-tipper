@@ -1,5 +1,6 @@
 flask
-psycopg2-binary
+# https://stackoverflow.com/a/62808487
+psycopg2
 flask_sqlalchemy
 flask_script
 flask_migrate

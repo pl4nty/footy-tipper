@@ -3,7 +3,7 @@
 FROM python:3.4
 
 # Install python3 for use by Boost.Python library, PostGres Client, and Sqlite3 for testing
-RUN apt-get update && apt-get -y install postgresql-client python3-dev sqlite3 libsqlite3-dev
+RUN apt-get update && apt-get -y install postgresql-client python3.4-dev sqlite3 libsqlite3-dev
 
 # Create semantic link, because python3-dev installs Python.h in /usr/include/python3.4,
 # but Boost.Python looks in /usr/local/include/python3.4 for Python.h

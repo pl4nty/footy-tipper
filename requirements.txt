@@ -3,7 +3,8 @@ flask
 psycopg2
 flask_sqlalchemy
 flask_script
-flask_migrate
+# https://stackoverflow.com/a/75102183
+flask_migrate==2.7.0
 sqlalchemy
 bs4
 aiohttp

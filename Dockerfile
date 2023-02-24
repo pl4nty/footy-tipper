@@ -19,14 +19,16 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential wget libbz
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN wget https://boostorg.jfrog.io/artifactory/main/release/1.65.0/source/boost_1_65_0.tar.gz \
-  && tar xfz boost_1_65_0.tar.gz \
-  && rm boost_1_65_0.tar.gz \
-  && cd boost_1_65_0 \
-  && ./bootstrap.sh --with-python=/usr/local/bin/python3 --with-python-version=3.4 --with-python-root=/usr/local/lib/python3.4 \
-  && ./b2 \
-  && ./b2 install \
-  && cd .. && rm -rf boost_1_65_0 && ldconfig
+RUN wget https://boostorg.jfrog.io/artifactory/main/release/1.65.0/source/boost_1_65_0.tar.gz
+RUN tar xfz boost_1_65_0.tar.gz
+RUN rm boost_1_65_0.tar.gz
+WORKDIR boost_1_65_0
+RUN ./bootstrap.sh --with-python=/usr/local/bin/python3 --with-python-version=3.4 --with-python-root=/usr/local/lib/python3.4
+RUN ./b2
+RUN ./b2 install
+WORKDIR /
+RUN rm -rf boost_1_65_0 
+RUN ldconfig
 
 # Add our code
 ADD ./ /app

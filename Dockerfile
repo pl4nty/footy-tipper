@@ -9,7 +9,7 @@ RUN apt-get update && apt-get -y install postgresql-client python3-dev sqlite3 l
 # but Boost.Python looks in /usr/local/include/python3.4 for Python.h
 # (From https://askubuntu.com/a/363716)
 RUN cd /usr/local/include \
-  && ln -s ../../include/python3.5 python3.4 \
+  && ln -s ../../include/python3.5m . \
   && cd /
 
 # Install packages needed to install Boost library, then install Boost library for python3

@@ -30,12 +30,14 @@ WORKDIR /
 RUN rm -rf boost_1_65_0 
 RUN ldconfig
 
-# Add our code
-ADD ./ /app
-WORKDIR /app
+ADD ./requirements.txt /app/requirements.txt
 
 # Install any needed packages specified in requirements.txt
 RUN pip3 install --no-build-isolation --trusted-host pypi.python.org -r requirements.txt
+
+# Add our code
+ADD ./ /app
+WORKDIR /app
 
 # Make port 5000 available to the world outside this container
 EXPOSE 5000

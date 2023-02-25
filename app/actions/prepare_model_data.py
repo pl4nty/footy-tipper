@@ -136,6 +136,8 @@ class MatchData():
                 'last_finals_reached'
             )
         ).reset_index()
+        
+        print(match_df)
 
         match_df = match_df.merge(
             last_finals_reached, on=['team', 'year'], how='left'

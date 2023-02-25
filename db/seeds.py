@@ -33,6 +33,8 @@ def seed_betting_odds(session, teams, matches):
                 if match.date == betting_record['full_date'].to_pydatetime() and
                 match.venue == betting_record['venue'])
         )
+        except StopIteration as e:
+            pass
 
         betting = {
             'win_odds': betting_record['win_odds'],
@@ -45,7 +47,7 @@ def seed_betting_odds(session, teams, matches):
         elif betting_team.id == betting_match.away_team_id:
             betting['away_match'] = betting_match
         else:
-            raise('Betting data {} does not match any existing '.format(betting_record) +
+            print('Betting data {} does not match any existing '.format(betting_record) +
                   'team/match combinations')
 
         session.add(BettingOdds(**betting))

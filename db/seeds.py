@@ -28,11 +28,12 @@ def seed_betting_odds(session, teams, matches):
         betting_team = next(
             team for team in teams if team.name == betting_record['team']
         )
-        betting_match = next(
-            (match for match in matches
-                if match.date == betting_record['full_date'].to_pydatetime() and
-                match.venue == betting_record['venue'])
-        )
+        try:
+            betting_match = next(
+                (match for match in matches
+                    if match.date == betting_record['full_date'].to_pydatetime() and
+                    match.venue == betting_record['venue'])
+            )
         except StopIteration as e:
             pass
 
